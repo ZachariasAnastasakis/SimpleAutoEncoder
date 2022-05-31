@@ -22,7 +22,7 @@ optimizer = optim.Adam(autoencoder.parameters(), lr=0.001, weight_decay=1e-5)
 running_loss = 0
 i = 0
 for epoch in range(epochs):
-    for image, label in tqdm(data_loader, desc=f'Epoch {epoch}/{epochs}'):
+    for image, label in tqdm(data_loader, desc=f'Epoch {epoch + 1}/{epochs}'):
         image = image.reshape(-1, 28 * 28)
         reconstructed_img = autoencoder(image)
         loss = criterion(reconstructed_img, image)
