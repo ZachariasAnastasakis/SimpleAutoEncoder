@@ -1,13 +1,12 @@
 import torch
 import torch.nn as nn
-from torchvision import datasets, transforms
-import matplotlib.pyplot as plt
+
 from tqdm import tqdm
 import torch.optim as optim
 from torch.utils.tensorboard import SummaryWriter
 from prepare_dataset import LoadDataset
 from Autoencoder import Autoencoder
-# add tensor boards
+
 writer = SummaryWriter('runs/AutoEncoder_train_loss')
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -32,7 +31,6 @@ for epoch in range(epochs):
         loss.backward()
         optimizer.step()
 
-        #running_loss += loss.item()
         writer.add_scalar('Loss/Train', loss.item(), epoch * total_steps + 1)
 
 print(f"Training finished with loss: {loss.item()}")
