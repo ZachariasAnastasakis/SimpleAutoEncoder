@@ -21,21 +21,25 @@ for i, (image, label) in enumerate(data_loader):
 
     if i == 8: break
 
-plt.figure(figsize=(9, 2))
+plt.figure(figsize=(9, 3))
 plt.gray()
 
 for i, item in enumerate(imgs):
     if i >= 9: break
-    plt.subplot(2, 9, i + 1)
-    item = item.reshape(-1, 28,28)
+    if i == 0: plt.subplot(2, 9, i + 1, title="Original Images")
+    else: plt.subplot(2, 9, i + 1)
+    item = item.reshape(-1, 28, 28)
     # item: 1, 28, 28
+    plt.axis('off')
     plt.imshow(item[0])
 
 for i, item in enumerate(recon):
     if i >= 9: break
-    plt.subplot(2, 9, 9 + i + 1)
-    item = item.reshape(-1, 28,28)
+    if i == 0: plt.subplot(2, 9, 9 + i + 1, title="Reconstructed Images")
+    else: plt.subplot(2, 9, 9 + i + 1)
+    item = item.reshape(-1, 28, 28)
     # item: 1, 28, 28
+    plt.axis('off')
     plt.imshow(item[0])
 
 plt.show()
